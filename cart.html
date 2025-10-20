@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ hàng - TG Shop</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+  </head>
+  <body>
+    <!-- Header (loaded by component loader) -->
+    <header
+      class="header v2024 hasbanner sticky1"
+      data-sub="0"
+      style="display: none"
+    >
+      <div class="header__top">
+        <div class="container">
+          <a href="index.html" class="header__logo" aria-label="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect width="40" height="40" rx="8" fill="#2377E8" />
+              <text
+                x="20"
+                y="27"
+                font-size="20"
+                font-weight="bold"
+                fill="white"
+                text-anchor="middle"
+              >
+                TG
+              </text>
+            </svg>
+          </a>
+
+          <form
+            action="/tim-kiem"
+            class="header__search"
+            onsubmit="return false;"
+          >
+            <input
+              id="skw"
+              type="text"
+              class="input-search"
+              placeholder="Tìm kiếm sản phẩm..."
+              name="key"
+              autocomplete="off"
+              maxlength="100"
+            />
+            <button type="submit" aria-label="button suggest search">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                />
+              </svg>
+            </button>
+            <div id="search-result"></div>
+          </form>
+
+          <div class="profile">
+            <a href="/lich-su-mua-hang" class="name-order">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+              </svg>
+              <span>Đăng nhập</span>
+            </a>
+          </div>
+
+          <a href="cart.html" class="header__cart menu-info" id="cart-box">
+            <div class="box-cart">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              <span class="cart-number cart-count">0</span>
+            </div>
+            <span>Giỏ hàng</span>
+            <div class="view-cart">
+              <span>Đã thêm vào giỏ hàng</span>
+              <b onclick="window.location.href='cart.html'">Xem giỏ hàng</b>
+            </div>
+          </a>
+
+          <a
+            href="javascript:;"
+            class="header__address"
+            onclick="toggleLocation()"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M10 2C6.69 2 4 4.69 4 8c0 4.5 6 10 6 10s6-5.5 6-10c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+              />
+            </svg>
+            <span>Hồ Chí Minh</span>
+          </a>
+
+          <div
+            class="remind_location"
+            id="locationRemind"
+            style="display: none"
+          >
+            <div class="remind_question">
+              Bạn đang ở tại <b>Hồ Chí Minh</b>?
+              <p class="remind_change" onclick="changeLocation()">Sửa</p>
+            </div>
+            <p class="remind_content">
+              Giá và khuyến mãi đang lấy theo khu vực này.
+            </p>
+            <div class="remind_btn-close" onclick="closeLocationRemind()"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header__main">
+        <div class="container">
+          <ul class="main-menu">
+            <li>
+              <a href="/dtdd">
+                <i
+                  ><img
+                    src="https://cdn.tgdd.vn/content/phonne-24x24.png"
+                    alt="icon Điện thoại"
+                /></i>
+                <span>Điện thoại</span>
+              </a>
+            </li>
+            <li>
+              <a href="/laptop">
+                <i
+                  ><img
+                    src="https://cdn.tgdd.vn/content/laptop-24x24.png"
+                    alt="icon Laptop"
+                /></i>
+                <span>Laptop</span>
+              </a>
+            </li>
+            <li>
+              <a href="/phu-kien">
+                <i
+                  ><img
+                    src="https://cdn.tgdd.vn/content/phu-kien-24x24.png"
+                    alt="icon Phụ kiện"
+                /></i>
+                <span>Phụ kiện</span>
+              </a>
+            </li>
+            <li>
+              <a href="/smartwatch">
+                <i
+                  ><img
+                    src="https://cdn.tgdd.vn/content/smartwatch-24x24.png"
+                    alt="icon Đồng hồ"
+                /></i>
+                <span>Đồng hồ</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pc-may-in">
+                <i
+                  ><img
+                    src="https://cdn.tgdd.vn/content/PC-24x24.png"
+                    alt="icon PC, Máy in"
+                /></i>
+                <span>PC, Máy in</span>
+              </a>
+            </li>
+            <li>
+              <a href="/tablet">
+                <i
+                  ><img
+                    src="https://cdn.tgdd.vn/content/tablet-24x24.png"
+                    alt="icon Tablet"
+                /></i>
+                <span>Tablet</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <script src="js/load-components.js"></script>
+
+    <!-- Cart Page -->
+    <section class="cart-page" style="display: none">
+      <!-- Cart Body -->
+      <div class="cart-body">
+        <!-- Middle Cart -->
+        <div class="middleCart">
+          <!-- Location Info -->
+          <div class="cart-fragment">
+            <div class="info__cart location">
+              <div class="location-content" onclick="openAddressPopup()">
+                <div class="title-content">
+                  <div class="location-title">
+                    Vui lòng cung cấp thông tin nhận hàng
+                  </div>
+                  <div class="location-address">
+                    <span class="icon-location">📍</span>
+                    <div class="address-text">
+                      <a
+                        >350-352 Võ Văn Kiệt, Phường Cầu Ông Lãnh, Quận 1, TP.
+                        Hồ Chí Minh</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="delivery_arrow">›</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product List -->
+          <div class="product-list" id="cartProductList">
+            <!-- Empty by default. Items will be injected here by JS -->
+          </div>
+
+          <!-- Total Provisional -->
+          <div class="total-provisional">
+            <span class="total-product-quantity">
+              <span class="total-label">Tạm tính</span>
+              (<span id="totalQuantity">0</span> sản phẩm):
+            </span>
+            <span class="temp-total-money" id="tempTotalMoney">0₫</span>
+          </div>
+        </div>
+
+        <!-- Order Information -->
+        <div class="latch-order cart-fragment">
+          <p class="latch-order_title">Thông tin nhận hàng:</p>
+          <div class="latch-order_content">
+            <div class="box-order__area">
+              <div class="box-order">
+                <ul id="orderSummaryList">
+                  <!-- Empty by default. Summary items will be injected here by JS -->
+                </ul>
+
+                <!-- Delivery Info -->
+                <div class="delivery-fee-info">
+                  <div class="info-delivery">
+                    <p class="info">
+                      <strong>Giao 10h00 - 12h00, ngày mai (19/10)</strong>
+                    </p>
+                    <p class="info-change" onclick="openTimeDeliveryPopup()">
+                      Đổi thời gian
+                    </p>
+                  </div>
+                  <div class="fast-delivery">
+                    <p><i class="check-icon">✓</i> Giao siêu nhanh</p>
+                  </div>
+
+                  <div class="lastrow">
+                    <span class="fee-summary">
+                      <span class="fee-title">Phí giao hàng</span>
+                      <span class="freefee">Miễn phí</span>
+                    </span>
+                  </div>
+
+                  <div class="partnerInfo-delivery-wrapper">
+                    <div class="partnerInfo-delivery">
+                      Giao bởi nhân viên TG Shop, được đồng kiểm
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Special Requests -->
+        <div class="another-option-wrapper cart-fragment">
+          <p class="another-option-title">Yêu cầu đặc biệt</p>
+          <div class="another-option-item">
+            <label class="option-checkbox">
+              <input type="checkbox" id="transferData" />
+              <i class="checkbox-icon"></i>
+              <span>Chuyển danh bạ, dữ liệu qua máy mới</span>
+            </label>
+
+            <label class="option-checkbox">
+              <input type="checkbox" id="companyInvoice" />
+              <i class="checkbox-icon"></i>
+              <span>Xuất hóa đơn công ty</span>
+            </label>
+
+            <div class="another-option-customernote">
+              <label class="option-checkbox">
+                <input
+                  type="checkbox"
+                  id="otherRequest"
+                  onchange="toggleCustomerNote()"
+                />
+                <i class="checkbox-icon"></i>
+                <span>Yêu cầu khác</span>
+              </label>
+              <div class="customernote-input" id="customerNoteInput">
+                <input
+                  type="text"
+                  placeholder="Nhập yêu cầu của bạn..."
+                  id="cusNote"
+                  name="cusNote"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promotion Code & Points -->
+        <div class="cart-fragment">
+          <div class="promotioncodebox" onclick="openCouponPopup()">
+            <div class="coupon-content">
+              <i class="coupon-icon">🎫</i>
+              <p>Sử dụng mã giảm giá</p>
+              <div class="arrow-right">›</div>
+            </div>
+          </div>
+
+          <div class="giftvip-point">
+            <div class="giftvip-left">
+              <i class="giftvip-icon">⭐</i>
+              <span>Dùng điểm Quà Tặng VIP</span>
+              <div class="toggle-switch">
+                <input
+                  type="checkbox"
+                  id="usePoints"
+                  onchange="togglePoints()"
+                />
+                <label for="usePoints" class="toggle-label"></label>
+              </div>
+            </div>
+            <div class="points-available" id="pointsDisplay">
+              <span class="points-text">Bạn có: 150.000 điểm</span>
+            </div>
+          </div>
+
+          <!-- Total Area -->
+          <div class="area-total">
+            <div class="area-total__break-line"></div>
+            <div class="total-price">
+              <strong>Tổng tiền</strong>
+              <strong id="finalTotalMoney">0₫</strong>
+            </div>
+            <div class="accumulated-point">
+              <span>Điểm tích lũy Quà Tặng VIP</span>
+              <span id="accumulatedPoints">0 điểm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods-wrapper">
+          <div class="payment-title">Hình thức thanh toán</div>
+          <ul class="formality-pay-new">
+            <li class="payment-method-item active" data-method="cash">
+              <i class="payment-radio-item active"></i>
+              <div class="payment-text">
+                <i class="payment-icon-cash">💵</i>
+                <span>Thanh toán tiền mặt khi nhận hàng</span>
+              </div>
+            </li>
+            <li class="payment-method-item" data-method="bank">
+              <i class="payment-radio-item"></i>
+              <div class="payment-text">
+                <i class="payment-icon-bank">🏦</i>
+                <span>Chuyển khoản ngân hàng</span>
+              </div>
+            </li>
+            <li class="payment-method-item" data-method="credit">
+              <i class="payment-radio-item"></i>
+              <div class="payment-text">
+                <i class="payment-icon-credit">💳</i>
+                <span>Thanh toán qua thẻ tín dụng</span>
+              </div>
+            </li>
+            <li class="payment-method-item" data-method="installment">
+              <i class="payment-radio-item"></i>
+              <div class="payment-text">
+                <i class="payment-icon-installment">📱</i>
+                <span>Trả góp 0% (qua thẻ tín dụng)</span>
+              </div>
+            </li>
+          </ul>
+          <button class="finaltotal--button-submit" onclick="submitOrder()">
+            Đặt hàng
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Order Success Page (Hidden by default) -->
+    <section
+      class="order-success-page"
+      id="orderSuccessPage"
+      style="display: none"
+    >
+      <div class="cart-body">
+        <!-- Success Alert -->
+        <div class="alertsuccess-new">
+          <i class="iconcart-thankyou-succcess">✓</i>
+          <strong class="success-title">Đặt hàng thành công</strong>
+        </div>
+
+        <!-- Order Content -->
+        <div class="ordercontent">
+          <div class="thank-you-message">
+            <p>
+              Cảm ơn <span id="customerTitle">Anh</span>
+              <b id="customerNameSuccess">Nguyễn Văn A</b> đã cho TG Shop cơ hội
+              được phục vụ
+            </p>
+          </div>
+
+          <!-- Order Info -->
+          <div class="info-order">
+            <div class="info-order-header">
+              <div>
+                <h4 class="order-number">
+                  Đơn hàng: <span id="orderNumber">#TGS10250001</span>
+                </h4>
+              </div>
+              <div class="order-actions">
+                <a href="index.html" class="action-link">Quản lý đơn hàng</a>
+                <a href="javascript:;" class="action-link-cancel">Hủy</a>
+              </div>
+            </div>
+
+            <label class="info-order-item">
+              <span>
+                <i class="info-order__dot-icon">•</i>
+                <span>
+                  <strong>Người nhận hàng: </strong>
+                  <span id="receiverInfo">Anh Nguyễn Văn A, 0912345678</span>
+                </span>
+              </span>
+            </label>
+
+            <label class="info-order-item">
+              <span>
+                <i class="info-order__dot-icon">•</i>
+                <span>
+                  <strong>Giao đến: </strong>
+                  <span id="deliveryAddress"
+                    >350-352 Võ Văn Kiệt, Phường Cầu Ông Lãnh, Quận 1, TP. Hồ
+                    Chí Minh (nhân viên sẽ gọi xác nhận trước khi giao)</span
+                  >
+                </span>
+              </span>
+            </label>
+
+            <label class="info-order-item">
+              <span>
+                <i class="info-order__dot-icon">•</i>
+                <span>
+                  <strong>Tổng tiền: </strong>
+                  <b class="price-red" id="totalOrderMoney">32.980.000₫</b>
+                </span>
+              </span>
+            </label>
+          </div>
+
+          <!-- Points Info -->
+          <div class="points-accumulate">
+            <i class="icon-points">⭐</i>
+            <p>
+              Bạn tích được <b id="accumulatedPointsSuccess">65.960</b> điểm cho
+              đơn hàng này.
+            </p>
+          </div>
+
+          <!-- Payment Status -->
+          <div class="payment-status-warning">
+            <p>Đơn hàng chưa được thanh toán</p>
+          </div>
+
+          <!-- Payment Method -->
+          <div class="current-payment-method">
+            <p>
+              <i class="info-order__dot-icon">•</i>Hình thức thanh toán:
+              <b id="selectedPaymentMethod"
+                >Thanh toán tiền mặt khi nhận hàng</b
+              >
+            </p>
+          </div>
+
+          <!-- Delivery Time -->
+          <div class="delivery-time-section">
+            <h4 class="section-title-upper">Thời gian nhận hàng</h4>
+            <div class="delivery-box">
+              <h2 class="delivery-time-title" id="deliveryTimeSuccess">
+                Nhận hàng 10h00 - 12h00, ngày mai (19/10)
+              </h2>
+              <ul class="delivery-products-list" id="deliveryProductsList">
+                <!-- Products will be inserted here -->
+              </ul>
+            </div>
+            <a
+              href="javascript:;"
+              class="btn-shop-more"
+              onclick="resetToCartView()"
+              >Mua thêm sản phẩm khác</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empty Cart Message (Hidden by default) -->
+    <div class="empty-cart" id="emptyCart" style="display: none">
+      <div class="empty-cart-content">
+        <div class="empty-icon">🛒</div>
+        <h2>Giỏ hàng trống</h2>
+        <p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
+        <a href="index.html" class="btn-continue-shopping">
+          Tiếp tục mua sắm
+        </a>
+      </div>
+    </div>
+
+    <!-- Customer Info Popup -->
+    <div class="popup-Customer" id="customerInfoPopup">
+      <div class="popup-overlay-customer" onclick="closeCustomerPopup()"></div>
+      <div class="popup-container-customer">
+        <div class="title-css">
+          <h1 class="title-popup">Thông tin giao hàng</h1>
+          <div class="close-popup" onclick="closeCustomerPopup()">
+            <i>✕</i>
+          </div>
+        </div>
+
+        <div class="qtv-warning">
+          <div>
+            <i class="product-label-erorr-qtv">⚠️</i>
+          </div>
+          <p>Vui lòng nhập đầy đủ thông tin để tiếp tục bước tiếp theo</p>
+        </div>
+
+        <div class="pop_content cart-scroll">
+          <span class="section-title">Thông tin người đặt</span>
+
+          <div class="infor-customer cart-fragment">
+            <!-- <div class="mb-12">
+              <div class="sex-customer">
+                <input type="hidden" id="customerSex" value="-1" />
+                <span class="sex-option" data-value="1" onclick="selectSex(1)">
+                  <i class="cart-radio-item"></i> Anh
+                </span>
+                <span class="sex-option" data-value="0" onclick="selectSex(0)">
+                  <i class="cart-radio-item"></i> Chị
+                </span>
+              </div>
+            </div> -->
+
+            <div class="form-container">
+              <div class="fillinform">
+                <div class="fillname">
+                  <input
+                    class="form-input"
+                    name="cusName"
+                    maxlength="50"
+                    id="cusName"
+                    type="text"
+                    required
+                    value=""
+                  />
+                  <span for="cusName" class="form-label">Họ và Tên</span>
+                </div>
+                <div class="fillname phonenumber">
+                  <input
+                    type="tel"
+                    name="cusPhone"
+                    id="cusPhone"
+                    maxlength="10"
+                    required
+                    class="form-input"
+                    value=""
+                  />
+                  <span for="cusPhone" class="form-label">Số điện thoại</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="choosegetgoods">
+            <div class="delivery-section">
+              <span class="deliveryMethodTitle">Chọn hình thức giao hàng</span>
+              <div class="delivery-methods">
+                <input type="hidden" id="deliveryMethodPopup" value="2" />
+                <span
+                  class="deliveryMethod option-first active"
+                  data-method="2"
+                  onclick="selectDeliveryMethod(2)"
+                >
+                  <span class="iconcart-label-giaotannoi">🚚</span> Giao tận nơi
+                </span>
+                <span
+                  class="deliveryMethod option-second"
+                  data-method="1"
+                  onclick="selectDeliveryMethod(1)"
+                >
+                  <span class="iconcart-label-nhantaisieuthi">🏪</span> Nhận tại
+                  siêu thị
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="handle-location">
+            <p class="handle-location__address">
+              <span>Địa chỉ đang chọn: </span>
+              350-352 Võ Văn Kiệt, Phường Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh
+            </p>
+
+            <div class="fillinform addressinfo" id="addressInput">
+              <div class="fillsuggest">
+                <input
+                  type="text"
+                  maxlength="255"
+                  id="cusAddress"
+                  name="cusAddress"
+                  class="form-input"
+                  required
+                  placeholder=" "
+                />
+                <span for="cusAddress" class="form-label"
+                  >Nhập địa chỉ (Tòa nhà, Số nhà, Tên đường,...) để gợi ý</span
+                >
+                <div class="classIconInput">
+                  <i class="cart-search">🔍</i>
+                  <i class="arrow-search_input">›</i>
+                </div>
+              </div>
+              <div>
+                <div class="handle-location__text-note-2">
+                  <span>Hoặc</span>
+                </div>
+                <div class="suggest-location__not-found">
+                  <p>Chọn địa chỉ</p>
+                  <small>Nhập địa chỉ theo Tỉnh/TP, Phường/ xã</small>
+                  <i class="delivery_arrow">›</i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="consignee-section" id="consigneeSection">
+            <span class="consigneeWarning"
+              >Vui lòng cung cấp thông tin người nhận để nhân viên giao hàng có
+              thể liên lạc</span
+            >
+            <div class="infor-customer consigneeBox">
+              <div class="mb-12">
+                <div class="sex-customer">
+                  <input type="hidden" id="consigneeSex" value="-1" />
+                  <span
+                    class="sex-option"
+                    data-value="1"
+                    onclick="selectConsigneeSex(1)"
+                  >
+                    <i class="cart-radio-item"></i> Anh
+                  </span>
+                  <span
+                    class="sex-option"
+                    data-value="0"
+                    onclick="selectConsigneeSex(0)"
+                  >
+                    <i class="cart-radio-item"></i> Chị
+                  </span>
+                </div>
+              </div>
+              <div class="form-container">
+                <div class="fillinform">
+                  <div class="fillname">
+                    <input
+                      class="form-input"
+                      name="consigneeName"
+                      maxlength="50"
+                      id="consigneeName"
+                      type="text"
+                      required
+                      value=""
+                    />
+                    <span for="consigneeName" class="form-label"
+                      >Họ và Tên</span
+                    >
+                  </div>
+                  <div class="fillname phonenumber">
+                    <input
+                      type="tel"
+                      name="consigneePhone"
+                      id="consigneePhone"
+                      maxlength="10"
+                      required
+                      class="form-input"
+                      value=""
+                    />
+                    <span for="consigneePhone" class="form-label"
+                      >Số điện thoại</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content_submit_popup">
+          <button
+            type="button"
+            class="submit-customerinfo"
+            onclick="submitCustomerInfo(); return false;"
+          >
+            Xác Nhận
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Time Delivery Popup -->
+    <div class="time-delivery-popup" id="timeDeliveryPopup">
+      <div class="popup-overlay" onclick="closeTimeDeliveryPopup()"></div>
+      <div class="popup-container">
+        <div class="popup-header">
+          <h3>Chọn thời gian nhận hàng:</h3>
+          <button class="popup-close" onclick="closeTimeDeliveryPopup()">
+            ✕
+          </button>
+        </div>
+
+        <div class="delivery-dates">
+          <div class="date-item active" data-date="2025-10-19">
+            Ngày mai (19/10)
+          </div>
+          <div class="date-item" data-date="2025-10-20">Thứ Hai (20/10)</div>
+          <div class="date-item" data-date="2025-10-21">Thứ Ba (21/10)</div>
+          <div class="date-item" data-date="2025-10-22">Thứ Tư (22/10)</div>
+        </div>
+
+        <label class="strict-time-checkbox">
+          <input type="checkbox" id="strictTime" />
+          <i class="checkbox-icon"></i>
+          <span>Chỉ giao trong khung giờ đã chọn, không gọi giao sớm</span>
+        </label>
+
+        <div class="delivery-times">
+          <div class="time-item active" data-time="10:00-12:00">
+            <i class="time-radio-item active"></i>
+            <div>10h00 - 12h00</div>
+          </div>
+          <div class="time-item" data-time="12:00-14:00">
+            <i class="time-radio-item"></i>
+            <div>12h00 - 14h00</div>
+          </div>
+          <div class="time-item" data-time="14:00-16:00">
+            <i class="time-radio-item"></i>
+            <div>14h00 - 16h00</div>
+          </div>
+          <div class="time-item" data-time="16:00-18:00">
+            <i class="time-radio-item"></i>
+            <div>16h00 - 18h00</div>
+          </div>
+          <div class="time-item" data-time="18:00-20:00">
+            <i class="time-radio-item"></i>
+            <div>18h00 - 20h00</div>
+          </div>
+        </div>
+
+        <div class="popup-actions">
+          <button class="btn-cancel" onclick="closeTimeDeliveryPopup()">
+            Đóng
+          </button>
+          <button class="btn-save" onclick="saveDeliveryTime()">
+            Lưu thay đổi
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="container-main">
+          <div class="footer-links">
+            <!-- Column 1 - iPhone -->
+            <div class="footer-column">
+              <div class="footer-link-group">
+                <a href="/mobile/apple/iphone-air" title="iPhone Air"
+                  >iPhone Air</a
+                >
+                <span class="divider">|</span>
+                <a href="/mobile/apple/iphone-17" title="iPhone 17"
+                  >iPhone 17</a
+                >
+                <span class="divider">|</span>
+                <a href="/iphone-17-pro" title="iPhone 17 Pro">iPhone 17 Pro</a>
+              </div>
+              <div class="footer-link-group">
+                <a href="/iphone-17-pro-max" title="Giá iPhone 17 Pro Max"
+                  >Giá iPhone 17 Pro Max</a
+                >
+              </div>
+              <div class="footer-link-group">
+                <a href="/mobile/apple/iphone-16" title="iPhone 16"
+                  >iPhone 16</a
+                >
+                <span class="divider">|</span>
+                <a href="/iphone-16-pro-max" title="iPhone 16 Pro Max"
+                  >iPhone 16 Pro Max</a
+                >
+              </div>
+            </div>
+
+            <!-- Column 2 - Điện thoại -->
+            <div class="footer-column">
+              <div class="footer-link-group">
+                <a href="/mobile" title="Điện thoại">Điện thoại</a>
+                <span class="divider">|</span>
+                <a href="/mobile/apple" title="Điện thoại iPhone"
+                  >Điện thoại iPhone</a
+                >
+                <span class="divider">|</span>
+                <a href="/mobile/xiaomi" title="Xiaomi">Xiaomi</a>
+              </div>
+              <div class="footer-link-group">
+                <a href="/mobile/samsung" title="Điện thoại Samsung Galaxy"
+                  >Điện thoại Samsung Galaxy</a
+                >
+                <span class="divider">|</span>
+                <a href="/mobile/oppo" title="Điện thoại OPPO"
+                  >Điện thoại OPPO</a
+                >
+              </div>
+            </div>
+
+            <!-- Column 3 - Laptop & Tivi -->
+            <div class="footer-column">
+              <div class="footer-link-group">
+                <a href="/laptop" title="Laptop">Laptop</a>
+                <span class="divider">|</span>
+                <a href="/laptop/acer" title="Laptop Acer">Laptop Acer</a>
+                <span class="divider">|</span>
+                <a href="/laptop/dell" title="Laptop Dell">Laptop Dell</a>
+                <span class="divider">|</span>
+                <a href="/laptop/hp" title="Laptop HP">Laptop HP</a>
+              </div>
+              <div class="footer-link-group">
+                <a href="/tivi" title="Tivi">Tivi</a>
+                <span class="divider">|</span>
+                <a href="/tivi/samsung" title="Tivi Samsung">Tivi Samsung</a>
+                <span class="divider">|</span>
+                <a href="/tivi/sony" title="Tivi Sony">Tivi Sony</a>
+                <span class="divider">|</span>
+                <a href="/tivi/lg" title="Tivi LG">Tivi LG</a>
+              </div>
+            </div>
+
+            <!-- Column 4 - Đồ gia dụng -->
+            <div class="footer-column">
+              <div class="footer-link-group">
+                <a href="/do-gia-dung" title="Đồ gia dụng">Đồ gia dụng</a>
+                <span class="divider">|</span>
+                <a
+                  href="/nha-thong-minh/may-hut-bui"
+                  title="Máy hút bụi gia đình"
+                  >Máy hút bụi</a
+                >
+                <span class="divider">|</span>
+                <a href="/may-tinh-de-ban/build-pc" title="Build PC"
+                  >Build PC</a
+                >
+              </div>
+              <div class="footer-link-group">
+                <a href="/phu-kien/camera" title="Camera">Camera</a>
+                <span class="divider">|</span>
+                <a href="/chao-nam-hoc-moi" title="Back to school"
+                  >Back to school</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Info -->
+      <div class="footer-info">
+        <div class="container-main">
+          <p class="company-info">
+            Công ty TNHH Thương Mại và Dịch Vụ Kỹ Thuật DIỆU PHÚC - GPĐKKD:
+            0316172372 cấp tại Sở KH &amp; ĐT TP. HCM.
+            <br />
+            Địa chỉ: 350-352 Võ Văn Kiệt, Phường Cầu Ông Lãnh, Quận 1, TP. Hồ
+            Chí Minh, Việt Nam.
+            <br />
+            Điện thoại: <a href="tel:02871089666">028.7108.9666</a>
+          </p>
+
+          <!-- Certification Badges -->
+          <div class="footer-badges">
+            <a
+              href="http://online.gov.vn/Home/WebDetails/75641"
+              target="_blank"
+              rel="nofollow noopener"
+              title="Đã thông báo Bộ Công Thương"
+            >
+              <img
+                src="https://cdn2.cellphones.com.vn/80x,webp/media/logo/logoSaleNoti.png"
+                alt="Đã thông báo Bộ Công Thương"
+                width="80"
+                height="30"
+              />
+            </a>
+            <a
+              href="https://www.dmca.com/Protection/Status.aspx?ID=158f5667-cce3-4a18-b2d1-826225e6b022"
+              target="_blank"
+              rel="nofollow noopener"
+              title="DMCA Protected"
+            >
+              <img
+                src="https://images.dmca.com/Badges/dmca_copyright_protected150c.png?ID=158f5667-cce3-4a18-b2d1-826225e6b022"
+                alt="DMCA Protected"
+                width="112"
+                height="30"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer-copyright">
+        <div class="container-main">
+          <p>© 2025 DieuPhuc. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
+  </body>
+</html>

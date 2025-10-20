@@ -1,0 +1,758 @@
+<header class="header v2024 hasbanner sticky1" data-sub="0">
+  <div class="header__top">
+    <div class="container">
+      <a href="/" class="header__logo" aria-label="logo">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <rect width="40" height="40" rx="8" fill="#2377E8" />
+          <text
+            x="20"
+            y="27"
+            font-size="20"
+            font-weight="bold"
+            fill="white"
+            text-anchor="middle"
+          >
+            TG
+          </text>
+        </svg>
+      </a>
+
+      <form action="/tim-kiem" class="header__search" onsubmit="return false;">
+        <input
+          id="skw"
+          type="text"
+          class="input-search"
+          placeholder="Tìm kiếm sản phẩm..."
+          name="key"
+          autocomplete="off"
+          maxlength="100"
+        />
+        <button type="submit" aria-label="button suggest search">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            />
+          </svg>
+        </button>
+        <div id="search-result"></div>
+      </form>
+
+      <a href="cart.html" class="header__cart menu-info" id="cart-box">
+        <div class="box-cart">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          </svg>
+          <span class="cart-number cart-count">0</span>
+        </div>
+        <span>Giỏ hàng</span>
+        <div class="view-cart">
+          <span>Đã thêm vào giỏ hàng</span>
+          <b onclick="window.location.href='cart.html'">Xem giỏ hàng</b>
+        </div>
+      </a>
+
+      <a href="javascript:;" class="header__address" onclick="toggleLocation()">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <path
+            d="M10 2C6.69 2 4 4.69 4 8c0 4.5 6 10 6 10s6-5.5 6-10c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+          />
+        </svg>
+        <span>Hồ Chí Minh</span>
+      </a>
+
+      <div class="remind_location" id="locationRemind" style="display: none">
+        <div class="remind_question">
+          Bạn đang ở tại <b>Hồ Chí Minh</b>?
+          <p class="remind_change" onclick="changeLocation()">Sửa</p>
+        </div>
+        <p class="remind_content">
+          Giá và khuyến mãi đang lấy theo khu vực này.
+        </p>
+        <div class="remind_btn-close" onclick="closeLocationRemind()"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header__main">
+    <div class="container">
+      <ul class="main-menu">
+        <li>
+          <a href="/">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/phonne-24x24.png"
+                alt="icon Điện thoại"
+            /></i>
+            <span>Điện thoại</span>
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/laptop-24x24.png"
+                alt="icon Laptop"
+            /></i>
+            <span>Laptop</span>
+          </a>
+        </li>
+        <li class="has-list">
+          <a href="/">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/phu-kien-24x24.png"
+                alt="icon Phụ kiện"
+            /></i>
+            <span class="has-child">Phụ kiện</span>
+          </a>
+          <div class="navmwg">
+            <div class="item-child">
+              <strong>Phụ kiện di động</strong>
+              <a href="/sac-dtdd">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/99/61/9961578164909f8a9ee7678dc95feeb0.png"
+                />
+                <h3>Sạc dự phòng</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/6b/64/6b646ec5f1e9a726933ee31b86a32524.png"
+                />
+                <h3>Sạc, cáp</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/34/02/3402dd9ba3457b84482572d10bcae84e.png"
+                />
+                <h3>Ốp lưng điện thoại</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/83/60/836050bcf5e1c92dd8d9899bef9f039d.png"
+                />
+                <h3>Ốp lưng máy tính bảng</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/72/f4/72f4b3ee8f5c1b1a170d590b3a07256d.png"
+                />
+                <h3>Miếng dán</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/33/77/33770e364079ac9dd3888190bd574b8d.png"
+                />
+                <h3>Miếng dán Camera</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/24/66/2466de3fc4831f43afb0d69462130030.png"
+                />
+                <h3>Túi đựng AirPods</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/27/e7/27e7538fb93c10e768cd0344ee8f8cd9.png"
+                />
+                <h3>AirTag, Vỏ bảo vệ AirTag</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/3f/d5/3fd5723ac6f01521bd3d768d8ebc8d1a.png"
+                />
+                <h3>Bút tablet</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/9e/d6/9ed6b66919dccf3d26fc864184149913.png"
+                />
+                <h3>Túi đựng phụ kiện</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/01/d1/01d140b8ea3be3cdbf4b99299fd14969.png"
+                />
+                <h3>Dây đeo điện thoại</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/57/0a/570af01ac292e21788f3604443e9dacb.png"
+                />
+                <h3>Dây đồng hồ</h3>
+              </a>
+            </div>
+            <div class="item-child">
+              <strong>Phụ kiện laptop, PC</strong>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/e1/2d/e12deafa7615646e9cafc5bbd0667da8.png"
+                />
+                <h3>Hub, cáp chuyển đổi</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/53/a6/53a6599a6fc414025b42c5435928008f.png"
+                />
+                <h3>Chuột máy tính</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/7a/d3/7ad3598d5e291815bc6c7f98bb73d078.png"
+                />
+                <h3>Bàn phím</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/f9/32/f93258b536d9a7c59b7746e533fb271f.png"
+                />
+                <h3>Router - Thiết bị mạng</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/33/8b/338bb7d3763dee703562a108b497fc2f.png"
+                />
+                <h3>Balo, túi chống sốc</h3>
+              </a>
+              <a href="/">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/37/89/3789286eb297a89a09d57a73b77cd90f.png"
+                />
+                <h3>Giá đỡ laptop</h3>
+              </a>
+              <a href="/mieng-phu-ban-phim">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/c3/97/c397a6f5e562a5f3ad3084e4563d6dda.png"
+                />
+                <h3>Phủ phím laptop</h3>
+              </a>
+              <a href="/phan-mem">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/bb/07/bb07512d2429a1b38cedd20b750b734c.png"
+                />
+                <h3>Phần mềm</h3>
+              </a>
+              <a href="/gia-treo-man-hinh">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/7c/a7/7ca750e732738e17142f501ba33eb423.png"
+                />
+                <h3>Giá treo màn hình</h3>
+              </a>
+            </div>
+            <div class="item-child">
+              <strong>Thiết bị âm thanh</strong>
+              <a href="/tai-nghe-bluetooth">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/7c/09/7c09cbc92ef23816aa7d857ba8e0e194.png"
+                />
+                <h3>Tai nghe Bluetooth</h3>
+              </a>
+              <a href="/tai-nghe-co-day">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/12/1c/121cd7cb1fc1750893b3f41436b12c85.png"
+                />
+                <h3>Tai nghe dây</h3>
+              </a>
+              <a href="/tai-nghe-chup-tai">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/cf/9e/cf9e0eecbfc3e326f1c89f13b1ffe320.png"
+                />
+                <h3>Tai nghe chụp tai</h3>
+              </a>
+              <a href="/tai-nghe-the-thao">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/38/f7/38f7bf684502b5aa0c7949f6d38a6a55.png"
+                />
+                <h3>Tai nghe thể thao</h3>
+              </a>
+              <a href="/loa-laptop">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/76/6b/766be9586a3a82491ba8106b7e558605.png"
+                />
+                <h3>Loa</h3>
+                <span class="label-new menuitem_label">Hot</span>
+              </a>
+              <a href="/micro-cac-loai">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Common/18/41/1841c9ea1a67e3523c43d02c2b7f8917.png"
+                />
+                <h3>Micro</h3>
+              </a>
+            </div>
+            <div class="item-child">
+              <strong>Camera / Flycam / Gimbal</strong>
+              <a href="/camera-giam-sat?g=camera-giam-sat">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Common/e8/0c/e80cc810cf5d743dc7e88c7031380c80.png"
+                />
+                <h3>Camera trong nhà</h3>
+              </a>
+              <a href="/camera-giam-sat-camera-ngoai-troi">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/9e/e9/9ee9ae20f38eff97221f040a735752ce.png"
+                />
+                <h3>Camera ngoài trời</h3>
+              </a>
+              <a href="/flycam">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/b7/bc/b7bceecb5bd6f63aeee395d33d7bbcd4.png"
+                />
+                <h3>Flycam</h3>
+              </a>
+              <a href="/camera-hanh-trinh-hanh-dong">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/f4/2a/f42aa8a01e29d247b177a997c808c990.png"
+                />
+                <h3>Camera hành trình / hành động</h3>
+                <span class="label-new menuitem_label">Hot</span>
+              </a>
+              <a href="/gay-tu-suong">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/5a/a6/5aa6b91c9b77a1fb2ae9fe951485b2e4.png"
+                />
+                <h3>Gimbal</h3>
+              </a>
+              <a href="/may-chieu">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/52/5e/525e9344cd12cc2ac93344be9125895a.png"
+                />
+                <h3>Máy chiếu</h3>
+              </a>
+            </div>
+            <div class="item-child">
+              <strong>Phụ kiện gaming</strong>
+              <a href="/chuot-may-tinh-chuot-gaming">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/4d/c5/4dc5692050284aa3119430c8b77a1a41.png"
+                />
+                <h3>Chuột gaming</h3>
+              </a>
+              <a href="/ban-phim-gaming">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/42/c1/42c1a8d1a5d75648305f0997d04dca4d.png"
+                />
+                <h3>Bàn phím gaming</h3>
+              </a>
+              <a href="/tai-nghe-gaming">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/25/71/2571e5bc85393230a9d8c793c0fb6ad3.png"
+                />
+                <h3>Tai nghe gaming</h3>
+              </a>
+            </div>
+            <div class="item-child">
+              <strong>Thiết bị lưu trữ</strong>
+              <a href="/o-cung-di-dong">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Common/c1/4e/c14eb68c77b7402be257c972a8a9625b.png"
+                />
+                <h3>Ổ cứng di động</h3>
+              </a>
+              <a href="/the-nho-dien-thoai">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/0b/e8/0be891a66b3f2fdf30a3a18070d1453a.png"
+                />
+                <h3>Thẻ nhớ</h3>
+              </a>
+              <a href="/usb">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/34/b6/34b670e9f0f45c2d0290f41c5e747c28.png"
+                />
+                <h3>USB</h3>
+              </a>
+            </div>
+            <div class="item-child">
+              <strong>Phụ kiện khác</strong>
+              <a href="/pin">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/d9/89/d9895ecb4c3fe80fa6a5788548c0d40d.png"
+                />
+                <h3>Pin tiểu</h3>
+              </a>
+              <a href="/quat-mini">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/07/ab/07ab4544063dddcba20bf16c8066745d.png"
+                />
+                <h3>Quạt mini</h3>
+              </a>
+              <a href="/phu-kien-oto">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/9c/8e/9c8e5c73e245a377862049b483cb3b21.png"
+                />
+                <h3>Phụ kiện ô tô</h3>
+              </a>
+            </div>
+            <div class="item-child">
+              <strong>Thương hiệu hàng đầu</strong>
+              <a href="/phu-kien/apple">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/6a/6a/6a6a116227ceaf2f407f5573f44069ec.png"
+                />
+                <h3>Apple</h3>
+              </a>
+              <a href="/phu-kien/samsung">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/ea/1d/ea1d0470faaea58604610926a4f45fcb.png"
+                />
+                <h3>Samsung</h3>
+              </a>
+              <a href="/phu-kien/imou">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/ee/a1/eea14df76a63a0f6b9f3267143856602.png"
+                />
+                <h3>Imou</h3>
+              </a>
+              <a href="/phu-kien/baseus">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/0a/bd/0abddded6e3650bcd1859c511fcc2747.png"
+                />
+                <h3>Baseus</h3>
+              </a>
+              <a href="/phu-kien/jbl">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/be/88/be887406c072668c452a41be86574976.png"
+                />
+                <h3>JBL</h3>
+              </a>
+              <a href="/phu-kien/anker">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/67/bd/67bd9cf55ca10673bf3df7605e295bb4.png"
+                />
+                <h3>Anker</h3>
+              </a>
+              <a href="/phu-kien/xmobile">
+                <img
+                  class="lazy-menu"
+                  alt="thumb menu"
+                  width="25px"
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/c2/26/c22643c4c1ee6d06a78a4aebea060e37.png"
+                />
+                <h3>Xmobile</h3>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="/dong-ho-thong-minh-ldp">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/smartwatch-24x24.png"
+                alt="icon Smartwatch"
+            /></i>
+            <span>Smartwatch</span>
+          </a>
+        </li>
+        <li>
+          <a href="/dong-ho">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/watch-24x24.png"
+                alt="icon Đồng hồ"
+            /></i>
+            <span>Đồng hồ</span>
+          </a>
+        </li>
+        <li>
+          <a href="/may-tinh-bang">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/tablet-24x24.png"
+                alt="icon Tablet"
+            /></i>
+            <span>Tablet</span>
+          </a>
+        </li>
+        <li class="has-list show-left">
+          <a href="/may-doi-tra">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/may-cu-24x24.png"
+                alt="icon Máy cũ"
+            /></i>
+            <span class="has-child">Máy cũ, Thu cũ</span>
+          </a>
+          <div class="navmwg">
+            <div class="item-child">
+              <strong>Máy cũ, Thu cũ</strong>
+              <a href="/may-doi-tra">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/47/1b/471b8073fdb15619b6c958e5316e7f61.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Máy cũ giá tốt</h3>
+              </a>
+              <a href="/thu-cu-doi-moi">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/4e/b2/4eb2cac00f6019e50875c3d1d4f74d6b.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Thu cũ đổi mới</h3>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="has-list show-left">
+          <a href="/pc-may-in">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/PC-24x24.png"
+                alt="icon PC"
+            /></i>
+            <span class="has-child">Màn hình, Máy in</span>
+          </a>
+          <div class="navmwg">
+            <div class="item-child">
+              <strong>PC, Màn hình</strong>
+              <a href="/may-tinh-de-ban">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/5c/20/5c20902d35f326dc8947e3a6b2adc178.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Máy tính để bàn</h3>
+              </a>
+              <a href="/man-hinh-may-tinh">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/b6/76/b676088f8fa091112be65b0b4e8bb786.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Màn hình máy tính</h3>
+              </a>
+            </div>
+            <div class="item-child">
+              <strong>Máy in, Mực in</strong>
+              <a href="/muc-in">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/38/76/3876a43c46810299826ada7874b1cf6b.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Mực in</h3>
+              </a>
+              <a href="/may-in">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/24/b3/24b303278d3d03de8b3fa3a31c2a1820.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Máy in</h3>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="has-list show-left">
+          <a href="/sim-so-dep">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/sim-24x24.png"
+                alt="icon Sim"
+            /></i>
+            <span class="has-child">Sim, Thẻ cào</span>
+          </a>
+          <div class="navmwg limit-width">
+            <div class="item-child no-child-final">
+              <a href="/sim-so-dep">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/54/96/54965e9976059f689c8905bfa5696b61.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Sim, thẻ cào</h3>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="has-list show-left">
+          <a href="/tien-ich">
+            <i
+              ><img
+                src="https://cdn.tgdd.vn/content/tien-ich-24x24.png"
+                alt="icon Tiện ích"
+            /></i>
+            <span class="has-child">Dịch vụ tiện ích</span>
+          </a>
+          <div class="navmwg">
+            <div class="item-child">
+              <strong>Thanh toán hóa đơn</strong>
+              <a href="/tien-ich/thanh-toan-tra-gop">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/61/b6/61b6e80c07684c4846aeff658fdba88a.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Đóng tiền trả góp</h3>
+              </a>
+              <a href="/tien-ich/thanh-toan-tien-dien">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/8e/96/8e9685acf415892e991723bd885a7696.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Đóng tiền điện</h3>
+              </a>
+            </div>
+            <div class="item-child">
+              <strong>Bảo hành - Bảo hiểm</strong>
+              <a href="/tien-ich/bao-hiem">
+                <img
+                  src="https://cdnv2.tgdd.vn/mwg-static/common/Common/38/7a/387aa99478d8e608e234bb979b8835f9.png"
+                  alt="thumb menu"
+                  width="25px"
+                />
+                <h3>Bảo hiểm xe máy - Ô tô</h3>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
